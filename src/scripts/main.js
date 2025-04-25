@@ -357,13 +357,9 @@ const people = [
 // eslint-disable-next-line no-console
 console.log(people); // you can remove it
 
-const table = document.querySelector('.dashboard');
+const table = document.querySelector('.dashboard>tbody');
 
 if (table) {
-  const tbody = document.createElement('tbody');
-
-  table.appendChild(tbody);
-
   people.forEach((person) => {
     const row = document.createElement('tr');
 
@@ -386,8 +382,8 @@ if (table) {
       row.appendChild(cell);
     });
 
-    table.appendChild(row);
+    table.append(row);
   });
 } else {
-  alert('Table with class ".dashboard" not found in the DOM.');
+  alert('Table with class ".dashboard" not found.');
 }
