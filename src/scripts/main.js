@@ -359,27 +359,35 @@ console.log(people); // you can remove it
 
 const table = document.querySelector('.dashboard');
 
-people.forEach((person) => {
-  const row = document.createElement('tr');
+if (table) {
+  const tbody = document.createElement('tbody');
 
-  const age = person.died - person.born;
-  const century = Math.ceil(person.died / 100);
+  table.appendChild(tbody);
 
-  const values = [
-    person.name,
-    person.sex === 'm' ? 'Male' : 'Female',
-    person.born,
-    person.died,
-    age,
-    century,
-  ];
+  people.forEach((person) => {
+    const row = document.createElement('tr');
 
-  values.forEach((value) => {
-    const cell = document.createElement('td');
+    const age = person.died - person.born;
+    const century = Math.ceil(person.died / 100);
 
-    cell.textContent = value;
-    row.appendChild(cell);
+    const values = [
+      person.name,
+      person.sex === 'm' ? 'Male' : 'Female',
+      person.born,
+      person.died,
+      age,
+      century,
+    ];
+
+    values.forEach((value) => {
+      const cell = document.createElement('td');
+
+      cell.textContent = value;
+      row.appendChild(cell);
+    });
+
+    table.appendChild(row);
   });
-
-  table.appendChild(row);
-});
+} else {
+  alert('Table with class ".dashboard" not found in the DOM.');
+}
